@@ -28,12 +28,13 @@ def Startup():
 
 def DownloadCheckerStart():
     def Calculate(speed, size):
-
-        
+        Totalunform = (size * 1000000000) / ((speed * 1000000) / 8)
+        Totalform = datetime.timedelta(seconds = Totalunform)
+        return Totalform
 
     print("---- Download Time Checker ----")
     while True:
-        speed = input("Input your download speed: If you are unsure visit: https://www.speedtest.net/\n- ")
+        speed = input("Input your download speed in mbps(megabits per second): If you are unsure visit: https://www.speedtest.net/\n- ")
         sure = input("Are you sure? (y/n)\n- ")
         if sure not in ["y", "n"]:
             print("Error: invalid response")
@@ -47,21 +48,25 @@ def DownloadCheckerStart():
 
 
     while True:
-        size = input("Input the size of the file you are downloading\n- ")
+        size = input("Input the size of the file you are downloading in GB(Gigabytes)\n- ")
         sure = input("Are you sure? (y/n)\n- ")
         if sure not in ["y", "n"]:
             print("Error: invalid response")
 
         elif sure == "y":
             sure = None
+            print("Calculating the Result...\n")
+            time.sleep(1)
             break
+            
         
         else:
             print("\n")
             continue
 
+    Time = Calculate(float(speed), float(size))
 
-    print(f"The Results are: {Calculate(speed, size)}")
+    print(f"The Result is: {Time}")
 
 
 Startup()
