@@ -1,6 +1,7 @@
 #Imports
 import time
 import datetime
+import math
 #Download Time Checker V0.1
 #Written by Phill
 
@@ -28,7 +29,8 @@ def Startup():
 
 def DownloadCheckerStart():
     def Calculate(speed, size):
-        Totalunform = (size * 1000000000) / ((speed * 1000000) / 8)
+        Totalunform = round((size * 1000000000) / ((speed * 1000000) / 8))
+
         Totalform = datetime.timedelta(seconds = Totalunform)
         return Totalform
 
@@ -64,9 +66,7 @@ def DownloadCheckerStart():
             print("\n")
             continue
 
-    Time = Calculate(float(speed), float(size))
-
-    print(f"The Result is: {Time}")
+    print(f"The Result is: {Calculate(float(speed), float(size))}")
 
 
 Startup()
