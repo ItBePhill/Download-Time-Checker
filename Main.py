@@ -2,7 +2,7 @@
 import time
 import datetime
 import math
-#Download Time Checker V0.1
+#Download Time Checker
 #Written by Phill
 
 #Var
