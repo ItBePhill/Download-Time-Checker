@@ -11,7 +11,7 @@ speed = None
 sure =  None
 size = None
 def Startup():
-    print("----- Welcome to the Download Time Checker -----")
+    print("\n---- Menu ----")
     print("Would Would you Like to do?:\n1: Start\n2: Quit")
     while True:
         startorstop = int(input("- "))
@@ -37,6 +37,9 @@ def DownloadCheckerStart():
     print("---- Download Time Checker ----")
     while True:
         speed = input("Input your download speed in mbps(megabits per second): If you are unsure visit: https://www.speedtest.net/\n- ")
+        if not speed.isnumeric():
+            print("Error: Invalid Response")
+            continue
         sure = input("Are you sure? (y/n)\n- ")
         if sure not in ["y", "n"]:
             print("Error: invalid response")
@@ -51,6 +54,9 @@ def DownloadCheckerStart():
 
     while True:
         size = input("Input the size of the file you are downloading in GB(Gigabytes)\n- ")
+        if not size.isnumeric():
+            print("Error: Invalid Response")
+            continue
         sure = input("Are you sure? (y/n)\n- ")
         if sure not in ["y", "n"]:
             print("Error: invalid response")
@@ -66,7 +72,10 @@ def DownloadCheckerStart():
             print("\n")
             continue
 
-    print(f"The Result is: {Calculate(float(speed), float(size))}")
+    input(f"The Result is: {Calculate(float(speed), float(size))}, Press enter to go back to the menu")
+
+    Startup()
 
 
+print("----- Welcome to the Download Time Checker -----")
 Startup()
